@@ -13,6 +13,7 @@ class UpgradeController extends Controller
 
     public function index()
     {
+        // TODO: Change away from hardcoding.
         $upgrade1 = Group::where('name', 'Upgrade 1')->first();
         $upgrade2 = Group::where('name', 'Upgrade 2')->first();
 

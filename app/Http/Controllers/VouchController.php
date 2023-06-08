@@ -79,11 +79,13 @@ class VouchController extends Controller
     {
         $this->authorize('vouch', [$user, Auth::user()]);
 
+        // TODO: Move into request
         $this->validate($request, [
             'type' => 'required|in:positive,negative,neutral',
             'reason' => 'required|string|max:255',
         ]);
 
+        // TODO: Move into action
         $vouch = new Vouch([
             'type' => $request->type,
             'reason' => $request->reason,

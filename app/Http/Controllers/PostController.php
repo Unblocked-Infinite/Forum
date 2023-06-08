@@ -36,6 +36,7 @@ class PostController extends Controller
 
         $topic = Topic::findOrFail($request->input('topic_id'));
 
+        // TODO Move to an action
         $post = new Post([
             'content' => strip_tags($request->content),
         ]);
@@ -134,6 +135,7 @@ class PostController extends Controller
             $mentionedUsernames = $matches[1];
             $mentionedUsers = User::whereIn('username', $mentionedUsernames)->get();
 
+            // TODO move to an action
             foreach ($mentionedUsers as $mentionedUser) {
                 $notification = new Notification();
                 $notification->user_id = $mentionedUser->id;
@@ -147,16 +149,19 @@ class PostController extends Controller
 
     private function updatePostContent($request, $post)
     {
+        // TODO move to its own request
         $request->validate([
             'content' => 'required|min:3',
         ]);
 
+        // TODO move to an action
         $post->content = strip_tags($request->content);
         $post->save();
     }
 
     private function updateTopicAttributes($request, $topic)
     {
+        // TODO move to an action
         $topic->title = $request->input('title');
         $topic->is_hidden = $request->input('is_hidden') === "1";
         $topic->locked = $request->input('locked') === "1";

@@ -22,6 +22,7 @@ class ForumTabs extends Component
         $this->emit('updateContainerHeight', $height);
     }
 
+    // TODO fix this, it looks ugly.
     private function getTabsWithSectionsAndCategories()
     {
         return Tab::query()

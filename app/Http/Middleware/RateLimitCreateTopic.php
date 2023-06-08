@@ -17,6 +17,7 @@ class RateLimitCreateTopic
      */
     public function handle(Request $request, Closure $next): Response
     {
+        // TODO move decay and attempts into a config instead
         $userId = auth()->id();
         $maxAttempts = 10; // Maximum number of attempts
         $decayMinutes = 10; // The time frame in minutes

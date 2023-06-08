@@ -24,35 +24,6 @@ class TopicController extends Controller
         $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    // public function index(Category $category)
-    // {
-    //     $pinnedTopics = $category->topics()->pinned()->latest('created_at')->get();
-
-    //     $normalTopicsQuery = Topic::query()
-    //         ->select('id', 'title', 'slug', 'post_count', 'view_count', 'user_id', 'category_id', 'pinned', 'created_at', 'deleted_at', 'is_hidden')
-    //         ->where('category_id', $category->id)
-    //         ->where('pinned', false)
-    //         ->with('user:id,username,avatar')
-    //         ->latest('created_at');
-
-    //     // if (auth()->user() && auth()->user()->hasRole('admin')) {
-    //     //     $normalTopicsQuery->withTrashed();
-    //     // } else {
-    //     //     $normalTopicsQuery->whereNull('deleted_at');
-    //     // }
-
-    //     if (!(auth()->user() && auth()->user()->hasRole('admin'))) {
-    //         $normalTopicsQuery->where('is_hidden', false);
-    //     }
-
-    //     $normalTopics = $normalTopicsQuery->paginate(10);
-
-    //     return view('forum.topics.index', compact('category', 'pinnedTopics', 'normalTopics'));
-    // }
-
     public function index(Category $category)
     {
         $pinnedTopics = $category->topics()
@@ -130,7 +101,7 @@ class TopicController extends Controller
     {
         $this->authorize(TopicPolicy::CREATE, Topic::class);
 
-        // LOCKED AND PINEED SHOULD NOT BE DONE LIKE THIS
+        // ! Locked, Pinned, Is_hidden should not be done like this and hasRole should not be hardcoded
         $topic = new Topic([
             'title' => $request->title,
             'locked' => auth()->user()->hasRole('admin') && $request->has('locked'),
@@ -142,11 +113,13 @@ class TopicController extends Controller
             $topic->subcategory_id = $request->input('subcategory_id');
         }
 
+        // TODO: Move into action
         $topic->slug = Str::slug($topic->title) . '-' . Str::random(5);
         $topic->category()->associate($request->category_id);
         $topic->user()->associate(auth()->user());
         $topic->save();
 
+        // TODO: Move into action
         $post = new Post([
             'content' => strip_tags($request->content),
         ]);
@@ -205,6 +178,7 @@ class TopicController extends Controller
     {
         $this->authorize(TopicPolicy::UPDATE, $topic);
 
+        // TODO: Move into a request
         $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
@@ -212,6 +186,7 @@ class TopicController extends Controller
             'tags.*' => 'exists:tags,id',
         ]);
 
+        // TODO: Move into action
         $topic->title = $request->title;
         $topic->save();
 

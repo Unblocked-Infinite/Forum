@@ -106,18 +106,9 @@ Route::post('/report', [ReportController::class, 'store'])->middleware('auth')->
 Route::get('/conversations', Conversations::class)->name('conversations');
 Route::get('/messages/{recipient}', Messages::class)->name('messages');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/messages/inbox', [PrivateMessageController::class, 'inbox'])->name('user.inbox');
-//     Route::get('/messages/sent', [PrivateMessageController::class, 'sent'])->name('user.sent');
-//     Route::get('/messages/{privateMessage}', [PrivateMessageController::class, 'show'])->name('messages.show');
-//     Route::get('/user/{user}/send-message', [PrivateMessageController::class, 'create'])->name('messages.create');
-//     Route::post('user/{user}/send-message', [PrivateMessageController::class, 'store'])->name('messages.store');
-// });
-
 /**
  * Admin
  */
-// Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin'], 'as' => 'admin.'], function() {
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['checkAdminRole']], function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
 
@@ -150,7 +141,6 @@ Route::prefix('{category:slug}')->group(function () {
     Route::get('{subcategory}/{topic:slug}', [TopicController::class, 'show'])->name('subcategory.topics.show')->middleware(['auth', 'check_hidden_topic', 'checklogin']);
 
     Route::prefix('{topic:slug}')->group(function () {
-        // Route::get('/', [TopicController::class, 'show'])->name('topics.show')->middleware(CheckLogin::class);
         Route::get('/', [TopicController::class, 'show'])->name('topics.show')->middleware(['auth', 'check_hidden_topic', 'checklogin']);
         Route::get('edit', [TopicController::class, 'edit'])->name('topics.edit');
         Route::patch('update', [TopicController::class, 'update'])->name('topics.update');

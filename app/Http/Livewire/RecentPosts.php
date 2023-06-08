@@ -10,6 +10,7 @@ class RecentPosts extends Component
 {
     public function render()
     {
+        // TODO Don't hardcode the take
         $recentPosts = Post::with('user')
             ->where('is_first_post', 0)
             ->latest()

@@ -36,9 +36,7 @@ class IncrementTopicViewCount implements ShouldQueue
         $user = User::find($this->userId);
 
         if ($topic && $user) {
-            // Check if the user has viewed the topic before
             if (!$user->viewedTopics->contains($topic->id)) {
-                // Increment the view count and associate the topic with the user
                 $topic->increment('view_count');
                 $user->viewedTopics()->attach($topic->id);
             }

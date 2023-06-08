@@ -13,6 +13,9 @@ class CryptoPrices extends Component
     public $btcPrice;
     public $errorMessage;
 
+    /**
+     * TODO need to go through this one more time
+     */
     public function getPrices()
     {
         $prices = Cache::remember('crypto_prices', 600, function () {

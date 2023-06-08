@@ -70,6 +70,7 @@ class LikeController extends Controller
      */
     private function createLike($user, $post)
     {
+        // TODO Move to an action
         $like = new Like();
         $like->user_id = $user->id;
         $like->post_id = $post->id;

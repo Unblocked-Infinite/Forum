@@ -41,7 +41,7 @@ class ProfileController extends Controller
             },
             'topics' => function ($query) {
                 $query->select('id', 'user_id', 'category_id', 'title', 'slug', 'created_at')
-                    ->with('category'); // Add this line to eager-load the category relationship
+                    ->with('category');
             },
         ])
         ->findOrFail($user->id);
@@ -115,6 +115,7 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // TODO move to its own request
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current-password'],
         ]);
@@ -163,6 +164,7 @@ class ProfileController extends Controller
 
     public function updateSignature(Request $request)
     {
+        // TODO move to its own request
         $request->validate([
             'signature' => ['nullable', 'string', 'max:255'],
         ]);
@@ -171,6 +173,7 @@ class ProfileController extends Controller
 
         $canUpdateSignature = $user->isInGroup('Upgrade 1') || $user->isInGroup('Upgrade 2') || $user->hasRole('admin');
 
+        // TODO turn into action
         if ($canUpdateSignature) {
             $user->signature = $request->signature;
             $user->save();
@@ -237,6 +240,7 @@ class ProfileController extends Controller
 
         $canUpdate = $user->isInGroup('Upgrade 1') || $user->isInGroup('Upgrade 2') || $user->hasRole('admin');
 
+        // TODO: Move to its own request
         $request->validate([
             'title' => 'nullable|string|max:255',
             'username_color' => 'nullable|string|max:7',
@@ -253,6 +257,7 @@ class ProfileController extends Controller
             }
         }
 
+        // TODO make action
         $user->display_group_id = $request->input('display_group_id');
         $user->show_displayed_group = $request->input('show_displayed_group');
         $user->save();

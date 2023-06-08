@@ -16,6 +16,7 @@ class LatestPosts extends Component
         $latestPosts = Post::where('is_first_post', 0)
             ->where('created_at', '>=', Carbon::now()->subDay())
             ->paginate(10);
+
         return view('livewire.latest-posts', ['latestPosts' => $latestPosts]);
     }
 }

@@ -45,10 +45,10 @@ class PostList extends Component
             ->where('topic_id', $this->topicId)
             ->with([
                 'user:id,username,avatar,avatar_bg,post_count,topic_count,title,signature,username_color,credit,created_at,show_displayed_group,display_group_id,is_banned',
-                'user.roles', // Eager load the roles relationship
-                'user.displayedGroup', // Eager load the displayedGroup relationship
-                'user.awards', // Eager load the awards relationship
-                'user.groups', // Eager load the groups relationship
+                'user.roles',
+                'user.displayedGroup',
+                'user.awards',
+                'user.groups',
                 'user.reputations',
                 'user.vouches',
                 'topic:id,slug,category_id',
