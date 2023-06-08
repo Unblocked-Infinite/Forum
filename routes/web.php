@@ -26,7 +26,6 @@ use App\Http\Controllers\Admin\TagController as AdminTagsController;
 use App\Http\Controllers\Admin\RoleController as AdminRolesController;
 use App\Http\Controllers\Admin\PermissionController as AdminPermissionsController;
 
-use App\Http\Livewire\Conversations;
 use App\Http\Livewire\Messages;
 
 /*
@@ -102,9 +101,6 @@ Route::post('/users/{user}/reputation', [ReputationController::class, 'store'])-
 
 Route::get('users/{user}/report', [ReportController::class, 'create'])->middleware('auth')->name('report.create');
 Route::post('/report', [ReportController::class, 'store'])->middleware('auth')->name('report.store');
-
-Route::get('/conversations', Conversations::class)->name('conversations');
-Route::get('/messages/{recipient}', Messages::class)->name('messages');
 
 /**
  * Admin

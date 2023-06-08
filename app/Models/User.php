@@ -307,16 +307,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Post::class, 'likes', 'user_id', 'post_id')->withTimestamps() ?: collect([]);
     }
 
-    public function conversations()
-    {
-        return $this->belongsToMany(Conversation::class, 'conversation_users');
-    }
-
-    public function privateMessages()
-    {
-        return $this->hasMany(PrivateMessage::class, 'sender_id');
-    }
-
     public function notifications()
     {
         return $this->hasMany(Notification::class);

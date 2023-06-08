@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class);
             $table->foreignIdFor(\App\Models\Category::class);
 
-            $table->unsignedBigInteger('subcategory_id')->nullable()->after('category_id');
+            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
 
             $table->unsignedInteger('post_count')->default(0);
