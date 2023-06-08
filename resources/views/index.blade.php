@@ -5,8 +5,7 @@
                 <h1 class="mb-4 text-4xl font-bold uppercase text-neutral-300">
                     Relius,</h1>
                 <p class="leading-6 text-neutral-500">
-                    Use the Protocol API to access contacts, conversations, group messages, and more and seamlessly
-                    integrate your product into the workflows of dozens of devoted Protocol users.
+                    Here is a nice piece of forum.. Do stuff.
                 </p>
                 <div class="pt-4 space-x-2">
                     <a class="inline-flex gap-0.5 justify-center overflow-hidden text-sm font-medium transition rounded-md bg-zinc-900 py-1 px-3 hover:bg-zinc-700 bg-cyan-400/10 text-cyan-400 ring-1 ring-inset ring-cyan-400/20 hover:bg-cyan-400/10 hover:text-cyan-300 hover:ring-cyan-300"
