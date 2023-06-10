@@ -19,7 +19,6 @@ class TopicSeeder extends Seeder
                     'user_id' => \App\Models\User::all()->random()->id,
                 ]);
 
-                // Create 5 replies for each topic and assign them to a user at random and give that user a role of member
                 for ($i = 0; $i < 11; $i++) {
                     \App\Models\Post::factory()->create([
                         'topic_id' => $topic->id,

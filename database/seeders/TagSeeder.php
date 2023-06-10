@@ -21,10 +21,5 @@ class TagSeeder extends Seeder
         ];
 
         DB::table('tags')->insert($tags);
-
-        // Tag::create(['name' => 'shop']);
-        // Tag::create(['name' => 'help']);
-        // Tag::create(['name' => 'source']);
-        // Tag::create(['name' => 'news']);
     }
 }

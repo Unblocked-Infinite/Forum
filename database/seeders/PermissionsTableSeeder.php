@@ -25,7 +25,6 @@ class PermissionsTableSeeder extends Seeder
             Permission::create([
                 'name' => $permission,
                 'description' => 'Allows a user to ' . $permission,
-                // 'slug' => $permission,
             ]);
         }
     }

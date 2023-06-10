@@ -13,7 +13,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            DefaultAvatarSeeder::class,
             PermissionsTableSeeder::class,
             RolesTableSeeder::class,
             UserSeeder::class,
@@ -23,12 +22,5 @@ class DatabaseSeeder extends Seeder
             AwardSeeder::class,
             GroupSeeder::class,
         ]);
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

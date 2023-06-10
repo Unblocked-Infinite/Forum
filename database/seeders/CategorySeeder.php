@@ -122,9 +122,6 @@ class CategorySeeder extends Seeder
             ],
         ];
 
-
-        // ... rest of the seeder code ...
-
         $now = now();
 
         foreach ($tabs as $tabData) {

@@ -60,7 +60,6 @@ class RolesTableSeeder extends Seeder
                 'name' => $roleName,
                 'display_name' => ucfirst($roleName),
                 'description' => ucfirst($roleName) . ' role',
-                // 'slug' => Str::slug($roleName),
             ]);
 
             $permissionIds = Permission::whereIn('name', $permissions)->pluck('id');

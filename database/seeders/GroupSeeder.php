@@ -15,15 +15,6 @@ class GroupSeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('groups')->insert([
-        //     'name' => "Ahegao",
-        //     'slug' => "ahegao",
-        //     'description' => "Group about anime",
-        //     'image' => 'https://i.imgur.com/LIHrypV.png',
-        //     'owner_id' => '1',
-        //     'created_at' => now(),
-        // ]);
-
         $groups = [
             [
                 'name' => "Upgrade 1",
@@ -131,7 +122,7 @@ class GroupSeeder extends Seeder
     private function storeGroupAvatar($imageUrl)
     {
         $imageName = basename($imageUrl);
-        $imagePath = 'public/groups/' . $imageName; // Add the 'public' prefix to the path
+        $imagePath = 'public/groups/' . $imageName;
 
         // Check if the image is already cached
         if (Cache::has($imagePath)) {
@@ -143,7 +134,7 @@ class GroupSeeder extends Seeder
         // Save the image to the public storage folder
         Storage::disk('public')->put($imagePath, $imageContent);
 
-        // Cache the image path for a specific duration (e.g., 1 day)
+        // Cache the image path for a specific duration
         $cacheDuration = 60 * 24;
         Cache::put($imagePath, $imagePath, $cacheDuration);
 
