@@ -3,6 +3,9 @@
   <br /><br /><strong>Forum</strong>
 </h1>
 
+    This is how far I got, before the guy blocked me and did not pay. 
+    There might be glitches and bugs. Functions that don't work.
+    Please don't make issues or contact me about it. 
 
 This forum is an upgrade from the experimental forum I made a few months ago. This forum was made as a request, but the person who wanted the forum made decided to block me. It's been locked away in my folder for some time now, but I don't feel like running a forum. So here is the open source version of it. - Oh yes, the person wanted it made such that it resembles ogusers, it kinda does but I changed it around a little.
 
